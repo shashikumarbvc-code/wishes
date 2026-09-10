@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganesh Chaturthi Celebration</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('C:/Users/shashikumarb.vc/Desktop/celebration/images/ganesh1.avif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #FF9933; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 1;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 50px rgba(255, 152, 0, 0.4);
+            max-width: 500px;
+            width: 85%;
+            border: 2px solid rgba(255, 193, 7, 0.5);
+            animation: popIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55), cardGlow 3s infinite alternate;
+        }
+
+        @keyframes cardGlow {
+            0% { box-shadow: 0 10px 50px rgba(255, 152, 0, 0.4); border-color: rgba(255, 193, 7, 0.5); }
+            100% { box-shadow: 0 10px 60px rgba(233, 30, 99, 0.6); border-color: rgba(233, 30, 99, 0.8); }
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(45deg, #FF512F, #DD2476); 
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(221, 36, 118, 0.4);
+            transition: all 0.3s ease;
+            animation: heartbeat 2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.1); box-shadow: 0 4px 25px rgba(221, 36, 118, 0.8); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); box-shadow: 0 4px 25px rgba(221, 36, 118, 0.8); }
+            60% { transform: scale(1); }
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #DD2476, #FF512F);
+            animation: none; 
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(221, 36, 118, 0.8);
+        }
+
+        #greetingCard {
+            display: none;
+        }
+
+        .ganesha-img {
+            width: 100%;
+            max-width: 220px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+            border: 4px solid #FF5722;
+            animation: floatGanesha 4s ease-in-out infinite, imageGlow 2s infinite alternate;
+        }
+
+        @keyframes floatGanesha {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes imageGlow {
+            0% { box-shadow: 0 0 10px #FFC107; border-color: #FFC107; }
+            100% { box-shadow: 0 0 30px #FF5722; border-color: #FF5722; }
+        }
+
+        .kannada-wishes {
+            font-size: 2em;
+            margin: 10px 0 5px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: colorShift 6s infinite alternate;
+        }
+
+        h1 {
+            font-size: 1.8em;
+            margin: 5px 0 10px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            animation: colorShift 6s infinite alternate-reverse;
+        }
+
+        @keyframes colorShift {
+            0% { color: #E91E63; }
+            33% { color: #FF5722; }
+            66% { color: #9C27B0; }
+            100% { color: #ff004c; }
+        }
+
+        p {
+            color: #2c3e50;
+            font-size: 1.1em;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 15px;
+            width: 100%;
+            text-align: center;
+            color: #FFFFFF;
+            font-size: 1.1em;
+            font-weight: bold;
+            z-index: 10;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            letter-spacing: 1px;
+            animation: floatGanesha 5s ease-in-out infinite;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            80% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .petal {
+            position: absolute;
+            border-radius: 50% 0 50% 0;
+            opacity: 0.9;
+            z-index: 20;
+            animation: swayFall linear forwards;
+        }
+
+        @keyframes swayFall {
+            0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 1; }
+            25% { transform: translateY(20vh) translateX(30px) rotate(180deg); }
+            50% { transform: translateY(50vh) translateX(-30px) rotate(360deg); }
+            75% { transform: translateY(80vh) translateX(30px) rotate(540deg); opacity: 0.8; }
+            100% { transform: translateY(110vh) translateX(-30px) rotate(720deg); opacity: 0; }
+        }
+
+        /* Fun Popup Styles */
+        #funPopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            text-align: center;
+            width: 80%;
+            max-width: 350px;
+            animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border: 3px solid #FF5722;
+        }
+
+        #funPopup h2 {
+            color: #FF512F;
+            margin-top: 0;
+        }
+
+        #funPopup .popup-btn {
+            margin-top: 15px;
+            padding: 10px 25px;
+            font-size: 1.2em;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.4);
+            transition: all 0.2s;
+        }
+        
+        #funPopup .popup-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                width: 90%;
+            }
+            .kannada-wishes {
+                font-size: 1.5em;
+            }
+            h1 {
+                font-size: 1.4em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .btn {
+                padding: 12px 30px;
+                font-size: 1.2em;
+            }
+            .ganesha-img {
+                max-width: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="container" id="mainContainer">
+        <button id="magicBtn" class="btn" onclick="triggerPopup()">Tap to Reveal 🌸</button>
+        
+        <div id="greetingCard">
+            <!-- User's local Ganesha image -->
+            <img src="C:/Users/shashikumarb.vc/Desktop/celebration/images/ganesh2.png" alt="Lord Ganesha" class="ganesha-img">
+            
+            <!-- Kannada Wishes -->
+            <div class="kannada-wishes">ಗೌರಿ ಗಣೇಶ ಹಬ್ಬದ ಹಾರ್ದಿಕ ಶುಭಾಶಯಗಳು!</div>
+            
+            <h1>Happy Ganesh Chaturthi!</h1>
+            <p>May Lord Ganesha remove all obstacles and bring you success, peace, and prosperity.</p>
+        </div>
+    </div>
+
+    <!-- Fun Popup -->
+    <div id="funPopup">
+        <h2>Modak Loading... 🥟</h2>
+        <p>Say <b>"Ganpati Bappa Morya!"</b> to unlock your surprise!</p>
+        <button class="popup-btn" onclick="celebrate()">Show Magic ✨</button>
+    </div>
+
+    <div class="footer">
+        Created by Shashi ✨
+    </div>
+
+    <script>
+        function triggerPopup() {
+            // Hide the main button and show the fun popup
+            document.getElementById('magicBtn').style.display = 'none';
+            document.getElementById('funPopup').style.display = 'block';
+            document.getElementById('mainContainer').style.opacity = '0.5'; // Dim the background card slightly
+        }
+
+        function celebrate() {
+            // Hide popup and restore main container
+            document.getElementById('funPopup').style.display = 'none';
+            document.getElementById('mainContainer').style.opacity = '1';
+            
+            let card = document.getElementById('greetingCard');
+            card.style.display = 'block';
+            
+            // Re-trigger the container's entrance animation so it pops exactly when clicked
+            let container = document.querySelector('.container');
+            container.style.animation = 'none';
+            container.offsetHeight; // trigger reflow
+            container.style.animation = 'popIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55), cardGlow 3s infinite alternate';
+
+            const colors = [
+                '#FFC107', '#FF9800', '#F44336', '#E91E63', 
+                '#FFEB3B', '#9C27B0', '#00BCD4', '#4CAF50', '#FF5722'
+            ];
+            
+            // Increased to 150 petals for maximum visual impact
+            for (let i = 0; i < 150; i++) {
+                setTimeout(() => {
+                    let petal = document.createElement('div');
+                    petal.classList.add('petal');
+                    
+                    petal.style.left = Math.random() * 100 + 'vw';
+                    petal.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    // Randomize fall speed and delay for a natural effect
+                    let fallDuration = (Math.random() * 4 + 3) + 's'; 
+                    petal.style.animationDuration = fallDuration;
+                    
+                    // Randomize sizes for a 3D depth effect (some look closer, some farther)
+                    let size = (Math.random() * 15 + 8) + 'px';
+                    petal.style.width = size;
+                    petal.style.height = size;
+                    
+                    document.body.appendChild(petal);
+                    
+                    setTimeout(() => {
+                        petal.remove();
+                    }, parseFloat(fallDuration) * 1000); // Remove based on individual fall duration
+                }, i * 25); 
+            }
+        }
+    </script>
+
+</body>
+</html>
